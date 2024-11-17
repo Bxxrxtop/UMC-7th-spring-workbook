@@ -24,7 +24,9 @@ public enum ErrorStatus implements BaseErrorCode {
             "COMMON403",
             "금지된 요청입니다."),
 
-    TEMP_EXCEPTION(HttpStatus.BAD_REQUEST, "TEMP4001", "이거는 테스트");
+    TEMP_EXCEPTION(HttpStatus.BAD_REQUEST, "TEMP4001", "이거는 테스트"),
+
+    FOOD_CATEGORY_NOT_FOUND(HttpStatus.NOT_FOUND, "FOODC4041", "해당 음식 카테고리는 없습니다.");
 
 
     private final HttpStatus httpStatus;
