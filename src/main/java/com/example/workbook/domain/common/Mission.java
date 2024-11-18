@@ -34,6 +34,10 @@ public class Mission {
     @OneToMany(mappedBy = "mission", cascade = CascadeType.ALL)
     private List<UserMission> userMissionList = new ArrayList<>();
 
+    public void setRestaurant(Restaurant restaurant){
+        this.restaurant = restaurant;
+    }
+
     @Override
     public String toString() {
         return "Mission{" +

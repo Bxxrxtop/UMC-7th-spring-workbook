@@ -1,6 +1,7 @@
 package com.example.workbook.service.ReviewService;
 
 import com.example.workbook.apiPayload.code.status.ErrorStatus;
+import com.example.workbook.apiPayload.exception.handler.RestaurantHandler;
 import com.example.workbook.apiPayload.exception.handler.UserHandler;
 import com.example.workbook.converter.ReviewConverter;
 import com.example.workbook.domain.common.Restaurant;
@@ -24,7 +25,7 @@ public class ReviewServiceImpl implements ReviewService{
     public ReviewResponseDto.AddReviewResponseDto addReview(ReviewRequestDto.AddReviewRequestDto dto) {
         Review review = ReviewConverter.toReview(dto);
         User user = userRepository.findById(dto.getUserId()).orElseThrow(() -> new UserHandler(ErrorStatus.USER_NOT_FOUND));
-        Restaurant restaurant = restaurantRepository.findById(dto.getRestaurantId()).orElseThrow(() -> new UserHandler(ErrorStatus.RESTAURANT_NOT_FOUND));
+        Restaurant restaurant = restaurantRepository.findById(dto.getRestaurantId()).orElseThrow(() -> new RestaurantHandler(ErrorStatus.RESTAURANT_NOT_FOUND));
 
         review.setUser(user);
         review.setRestaurant(restaurant);
