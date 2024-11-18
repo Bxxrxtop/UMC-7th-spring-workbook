@@ -5,7 +5,6 @@ import com.example.workbook.converter.TempConverter;
 import com.example.workbook.service.TempService.TempQueryService;
 import com.example.workbook.web.dto.TempResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

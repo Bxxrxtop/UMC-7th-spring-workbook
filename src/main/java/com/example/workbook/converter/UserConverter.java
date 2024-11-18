@@ -2,11 +2,9 @@ package com.example.workbook.converter;
 
 import com.example.workbook.domain.common.User;
 import com.example.workbook.domain.enums.Gender;
-import com.example.workbook.domain.enums.UserStatus;
 import com.example.workbook.web.dto.user.UserRequestDTO;
 import com.example.workbook.web.dto.user.UserResponseDTO;
 
-import java.lang.reflect.Member;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
