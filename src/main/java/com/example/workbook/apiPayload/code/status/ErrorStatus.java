@@ -32,7 +32,9 @@ public enum ErrorStatus implements BaseErrorCode {
 
     USER_NOT_FOUND(HttpStatus.NOT_FOUND, "USER4041", "해당 유저가 존재하지 않습니다."),
 
-    RESTAURANT_NOT_FOUND(HttpStatus.NOT_FOUND, "RES4041", "해당 식당이 존재하지 않습니다.");
+    RESTAURANT_NOT_FOUND(HttpStatus.NOT_FOUND, "RES4041", "해당 식당이 존재하지 않습니다."),
+
+    MISSION_NOT_FOUND(HttpStatus.NOT_FOUND, "MISSION4041", "해당 미션이 존재하지 않습니다.");
 
 
     private final HttpStatus httpStatus;

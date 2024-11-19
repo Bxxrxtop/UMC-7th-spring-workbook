@@ -1,5 +1,6 @@
 package com.example.workbook.web.dto.mission;
 
+import com.example.workbook.validation.annotation.ChallengingMissions;
 import com.example.workbook.validation.annotation.ExistRestaurant;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -18,5 +19,14 @@ public class MissionRequestDto {
         public Integer price;
         @ExistRestaurant
         public Long restaurantId;
+    }
+
+    @Getter
+    @ChallengingMissions
+    public static class AddMissionToListDto {
+        @NotNull
+        public Long missionId;
+        @NotNull
+        public Long userId;
     }
 }

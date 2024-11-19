@@ -20,4 +20,13 @@ public class MissionResponseDto {
         public Integer price;
         public Long restaurantId;
     }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class AddMissionToListResultDto {
+        Long userId;
+        Long missionId;
+    }
 }

@@ -2,6 +2,7 @@ package com.example.workbook.service.UserService;
 
 import com.example.workbook.apiPayload.code.status.ErrorStatus;
 import com.example.workbook.apiPayload.exception.handler.FoodCategoryHandler;
+import com.example.workbook.apiPayload.exception.handler.UserHandler;
 import com.example.workbook.converter.UserConverter;
 import com.example.workbook.converter.UserPreferConverter;
 import com.example.workbook.domain.common.FoodCategory;

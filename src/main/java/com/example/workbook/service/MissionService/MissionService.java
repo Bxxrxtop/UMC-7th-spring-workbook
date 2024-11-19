@@ -5,4 +5,5 @@ import com.example.workbook.web.dto.mission.MissionResponseDto;
 
 public interface MissionService {
     MissionResponseDto.AddMissionResponseDto addMission(MissionRequestDto.AddMissionRequestDto dto);
+    MissionResponseDto.AddMissionToListResultDto addMissionToList(MissionRequestDto.AddMissionToListDto dto);
 }

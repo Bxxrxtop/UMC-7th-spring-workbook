@@ -5,6 +5,7 @@ import com.example.workbook.domain.common.User;
 import com.example.workbook.domain.enums.MissionStatus;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
 @Entity
 @Getter
@@ -17,6 +18,7 @@ public class UserMission {
     private Long id;
 
     @Enumerated(EnumType.STRING)
+    @ColumnDefault("DEFAULT")
     private MissionStatus status;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -26,5 +28,13 @@ public class UserMission {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mission_id")
     private Mission mission;
+
+    public void setUser(User user){
+        this.user = user;
+    }
+
+    public void setMission(Mission mission){
+        this.mission = mission;
+    }
 }
 

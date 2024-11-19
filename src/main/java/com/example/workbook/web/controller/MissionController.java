@@ -22,4 +22,10 @@ public class MissionController {
         MissionResponseDto.AddMissionResponseDto result = missionService.addMission(dto);
         return ApiResponse.onSuccess(result);
     }
+
+    @PostMapping("/toList")
+    public ApiResponse<MissionResponseDto.AddMissionToListResultDto> addMissionToList(@RequestBody @Valid MissionRequestDto.AddMissionToListDto dto){
+        MissionResponseDto.AddMissionToListResultDto result = missionService.addMissionToList(dto);
+        return ApiResponse.onSuccess(result);
+    }
 }
