@@ -67,4 +67,20 @@ public class MissionController {
         Page<UserMission> missions = missionService.getUserMissionList(userId, page);
         return ApiResponse.onSuccess(MissionConverter.UserMissionPreViewListDto(missions));
     }
+
+    @PostMapping("/complete/{useMissionId}")
+    @Operation(summary = "특정 미션 완료 API",description = "특정 미션을 완료상태로 변경하는 API입니다.")
+    @ApiResponses({
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "COMMON200",description = "OK, 성공"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH003", description = "access 토큰을 주세요!",content = @Content(schema = @Schema(implementation = ApiResponse.class))),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH004", description = "acess 토큰 만료",content = @Content(schema = @Schema(implementation = ApiResponse.class))),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH006", description = "acess 토큰 모양이 이상함",content = @Content(schema = @Schema(implementation = ApiResponse.class))),
+    })
+    @Parameters({
+            @Parameter(name = "userMissionId", description = "특정 유저의 미션 아이디, path variable 입니다!")
+    })
+    public ApiResponse<String> getUserMissionList(@PathVariable(name = "useMissionId") Long userMissionId){
+         missionService.completeMission(userMissionId);
+        return ApiResponse.onSuccess("진행 중인 미션을 완료하였습니다.");
+    }
 }

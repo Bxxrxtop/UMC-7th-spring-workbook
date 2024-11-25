@@ -67,4 +67,13 @@ public class MissionServiceImpl implements MissionService{
     public Page<UserMission> getUserMissionList(Long userId, Integer page) {
         return userMissionRepository.findByUserIdAndStatus(userId, MissionStatus.CHALLENGING, PageRequest.of(page-1, 10));
     }
+
+    @Override
+    public void completeMission(Long userMissionId) {
+        UserMission userMission = userMissionRepository.findById(userMissionId).orElseThrow(() -> new IllegalArgumentException("해당 미션이 없습니다."));
+        if(!userMission.getStatus().equals(MissionStatus.CHALLENGING)){
+            throw new IllegalStateException("진행중인 미션이 아닙니다.");
+        }
+        userMission.setStatus(MissionStatus.COMPLETE);
+    }
 }

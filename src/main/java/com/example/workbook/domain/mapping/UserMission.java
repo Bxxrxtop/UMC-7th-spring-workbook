@@ -36,5 +36,9 @@ public class UserMission {
     public void setMission(Mission mission){
         this.mission = mission;
     }
+
+    public void setStatus(MissionStatus missionStatus){
+        status = missionStatus;
+    }
 }
 

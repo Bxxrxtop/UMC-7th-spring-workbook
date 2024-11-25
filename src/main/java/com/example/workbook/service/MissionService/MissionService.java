@@ -11,4 +11,5 @@ public interface MissionService {
     MissionResponseDto.AddMissionToListResultDto addMissionToList(MissionRequestDto.AddMissionToListDto dto);
     Page<Mission> restaurantMissionList(Long restaurantId, Integer page);
     Page<UserMission> getUserMissionList(Long userId, Integer page);
+    void completeMission(Long userMissionId);
 }
