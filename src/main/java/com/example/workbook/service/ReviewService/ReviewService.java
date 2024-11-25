@@ -8,4 +8,5 @@ import org.springframework.data.domain.Page;
 public interface ReviewService {
     ReviewResponseDto.AddReviewResponseDto addReview(ReviewRequestDto.AddReviewRequestDto dto);
     Page<Review> getReviewList(Long StoreId, Integer page);
+    Page<Review> getUserReviewList(Long userId, Integer page);
 }

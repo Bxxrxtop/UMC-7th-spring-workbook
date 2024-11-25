@@ -17,4 +17,10 @@ public class ReviewRequestDto {
         @ExistRestaurant
         public Long restaurantId;
     }
+
+
+    @Getter
+    public static class SelfReviewRequestDto{
+        public Long userId;
+    }
 }

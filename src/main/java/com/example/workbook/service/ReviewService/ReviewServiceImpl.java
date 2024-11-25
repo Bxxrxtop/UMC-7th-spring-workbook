@@ -43,4 +43,11 @@ public class ReviewServiceImpl implements ReviewService{
         Page<Review> reviewPage = reviewRepository.findAllByRestaurant(restaurant, PageRequest.of(page, 10));
         return reviewPage;
     }
+
+    @Override
+    public Page<Review> getUserReviewList(Long userId, Integer page) {
+        Integer pageNum = page - 1;
+        Page<Review> reviewPage = reviewRepository.findByUserId(userId, PageRequest.of(pageNum, 10));
+        return reviewPage;
+    }
 }
