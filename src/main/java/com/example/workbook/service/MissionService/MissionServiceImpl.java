@@ -7,6 +7,7 @@ import com.example.workbook.converter.UserMissionConverter;
 import com.example.workbook.domain.common.Mission;
 import com.example.workbook.domain.common.Restaurant;
 import com.example.workbook.domain.common.User;
+import com.example.workbook.domain.enums.MissionStatus;
 import com.example.workbook.domain.mapping.UserMission;
 import com.example.workbook.repository.MissionRepository;
 import com.example.workbook.repository.RestaurantRepository;
@@ -19,6 +20,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -58,5 +61,10 @@ public class MissionServiceImpl implements MissionService{
     @Override
     public Page<Mission> restaurantMissionList(Long restaurantId, Integer page) {
         return missionRepository.findAllByRestaurantId(restaurantId, PageRequest.of(page-1, 10));
+    }
+
+    @Override
+    public Page<UserMission> getUserMissionList(Long userId, Integer page) {
+        return userMissionRepository.findByUserIdAndStatus(userId, MissionStatus.CHALLENGING, PageRequest.of(page-1, 10));
     }
 }
