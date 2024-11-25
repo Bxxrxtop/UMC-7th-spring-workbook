@@ -13,6 +13,8 @@ import com.example.workbook.repository.UserRepository;
 import com.example.workbook.web.dto.review.ReviewRequestDto;
 import com.example.workbook.web.dto.review.ReviewResponseDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -33,5 +35,12 @@ public class ReviewServiceImpl implements ReviewService{
         reviewRepository.save(review);
 
         return ReviewConverter.toAddReviewRequestDto(review);
+    }
+
+    @Override
+    public Page<Review> getReviewList(Long restaurantId, Integer page) {
+        Restaurant restaurant = restaurantRepository.findById(restaurantId).get();
+        Page<Review> reviewPage = reviewRepository.findAllByRestaurant(restaurant, PageRequest.of(page, 10));
+        return reviewPage;
     }
 }

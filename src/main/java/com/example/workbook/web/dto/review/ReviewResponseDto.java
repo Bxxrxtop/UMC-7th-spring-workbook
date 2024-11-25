@@ -5,6 +5,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+import java.util.List;
+
 public class ReviewResponseDto {
 
     @Builder
@@ -17,5 +20,29 @@ public class ReviewResponseDto {
         public Double score;
         public Long userId;
         public Long restaurantId;
+    }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ReviewPreViewListDto {
+        List<ReviewPreViewDto> reviewList;
+        Integer listSize;
+        Integer totalPage;
+        Long totalElements;
+        Boolean isFirst;
+        Boolean isLast;
+    }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ReviewPreViewDto {
+        String ownerNickname;
+        Double score;
+        String content;
+        LocalDate createdAt;
     }
 }
