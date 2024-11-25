@@ -16,6 +16,8 @@ import com.example.workbook.web.dto.mission.MissionRequestDto;
 import com.example.workbook.web.dto.mission.MissionResponseDto;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -51,5 +53,10 @@ public class MissionServiceImpl implements MissionService{
         mission.addUserMission(userMission);
 
         return UserMissionConverter.toAddUserMissionDto(userMission);
+    }
+
+    @Override
+    public Page<Mission> restaurantMissionList(Long restaurantId, Integer page) {
+        return missionRepository.findAllByRestaurantId(restaurantId, PageRequest.of(page-1, 10));
     }
 }
