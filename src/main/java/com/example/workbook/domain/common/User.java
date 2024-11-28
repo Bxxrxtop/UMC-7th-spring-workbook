@@ -45,7 +45,7 @@ public class User extends BaseEntity{
     @Column(nullable = false, length = 40)
     private String address;
 
-    @Column(nullable = false)
+    @Column
     private LocalDate birth;
 
     @Enumerated(EnumType.STRING)
@@ -61,7 +61,7 @@ public class User extends BaseEntity{
     @ColumnDefault("0")
     private Integer point;
 
-    @Column(nullable = false, columnDefinition = "VARCHAR(13)")
+    @Column
     private String phone;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
