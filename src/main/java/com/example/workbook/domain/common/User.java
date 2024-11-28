@@ -2,6 +2,7 @@ package com.example.workbook.domain.common;
 
 
 import com.example.workbook.domain.enums.Gender;
+import com.example.workbook.domain.enums.Role;
 import com.example.workbook.domain.enums.UserStatus;
 import com.example.workbook.domain.mapping.UserCategory;
 import com.example.workbook.domain.mapping.UserMission;
@@ -29,6 +30,15 @@ public class User extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
     @Column(nullable = false, length = 20)
     private String name;
 
@@ -47,9 +57,6 @@ public class User extends BaseEntity{
     private UserStatus status;
 
     private LocalDate inactiveDate;
-
-    @Column(nullable = false, length = 50)
-    private String email;
 
     @ColumnDefault("0")
     private Integer point;
@@ -80,4 +87,8 @@ public class User extends BaseEntity{
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<UserPrefer> userPreferList = new ArrayList<>();
 
+
+    public void encodePassword(String password) {
+        this.password = password;
+    }
 }

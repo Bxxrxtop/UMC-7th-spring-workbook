@@ -13,6 +13,8 @@ import com.example.workbook.repository.UserRepository;
 import com.example.workbook.web.dto.user.UserRequestDTO;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,14 +22,19 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class UserCommandServiceImpl implements UserCommandService{
     private final UserRepository userRepository;
     private final FoodCategoryRepository foodCategoryRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     @Transactional
+
     public User joinUser(UserRequestDTO.JoinDto request) {
+
         User newUser = UserConverter.toUser(request);
+        newUser.encodePassword(passwordEncoder.encode(request.getPassword()));
         List<FoodCategory> foodCategoryList = request.getPreferCategory().stream()
                 .map(category -> {
                     return foodCategoryRepository.findById(category).orElseThrow(() -> new FoodCategoryHandler(ErrorStatus.FOOD_CATEGORY_NOT_FOUND));

@@ -5,6 +5,7 @@ import com.example.workbook.domain.enums.Gender;
 import com.example.workbook.web.dto.user.UserRequestDTO;
 import com.example.workbook.web.dto.user.UserResponseDTO;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -35,6 +36,8 @@ public class UserConverter {
         return User.builder()
                 .name(request.getName())
                 .address(request.getAddress())
+                .password(request.getPassword())
+                .role(request.getRole())
                 .birth(request.getBirth())
                 .gender(gender)
                 .email(request.getEmail())
